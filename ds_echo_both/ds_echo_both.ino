@@ -4,9 +4,9 @@
 
    02/12/24 tweaked formatting
             printed file name and path
-            added an OLED output
+            added an OLED output  
 */
-
+  
 #define HW1_SER   Serial1       // UART
 #include <Wire.h>
 #include <ACROBOTIC_SSD1306.h>    // minimal oled 128x64 driver
