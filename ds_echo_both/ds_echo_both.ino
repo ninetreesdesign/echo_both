@@ -9,7 +9,7 @@
   
 #define HW1_SER   Serial1       // UART
 #include <Wire.h>
-#include <ACROBOTIC_SSD1306.h>    // minimal oled 128x64 driver
+#include <ACROBOTIC_SSD1306.h>    // minimal oled 128x64 driver, one font size only
 
 uint16_t CONSOLE_FLAG = 1;  // USB Monitor
 uint16_t HWSER1_FLAG = 1;   // UART
@@ -34,7 +34,7 @@ void setup() {
   }
   Serial.println("USB Console port. \n");
 
-  Serial1.begin(9600);
+  Serial1.begin(115200);    // 9600
   Serial1.println("Hardware Serial port. \n");
 
   initOled();
@@ -106,7 +106,7 @@ void initOled()
   oled.init();                      // Initialze SSD1306 OLED display
   oled.clearDisplay();              // Clear screen
   oled.setTextXY(0, 0);             // Set cursor position, start of line 0
-  oled.putString("Cambrian Works");
+  oled.putString("SSD1306 128x64");
   oled.setTextXY(1, 3);             // Set cursor position, start of line 1
   oled.putString(" - * - ");
   oled.setTextXY(2, 3);            // Set cursor position, line 2 10th character
