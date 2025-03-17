@@ -7,12 +7,12 @@
             added an OLED output  
 */
   
-#define HW1_SER   Serial1       // UART
+#define HW_SER1   Serial1       // UART
 #include <Wire.h>
 #include <ACROBOTIC_SSD1306.h>    // minimal oled 128x64 driver, one font size only
 
-uint16_t CONSOLE_FLAG = 1;  // USB Monitor
-uint16_t HWSER1_FLAG = 1;   // UART
+bool CONSOLE_FLAG = 1;  // USB Monitor
+bool HWSER1_FLAG = 1;   // UART
 
 /* get the file name and path of this program */
 const char this_file[] PROGMEM = __FILE__;          // provided by system
@@ -74,15 +74,15 @@ void loop() {
     Serial.print("   ");
     Serial.println(inB, DEC); // print numerical value of ascii char
 
-    HW1_SER.print("USB: ");
-    if (inB < 48) HW1_SER.print(' ');
-    else HW1_SER.print(inB);
-    HW1_SER.print("   ");
-    HW1_SER.println(inB, DEC);
+    HW_SER1.print("USB: ");
+    if (inB < 48) HW_SER1.print(' ');
+    else HW_SER1.print(inB);
+    HW_SER1.print("   ");
+    HW_SER1.println(inB, DEC);
     digitalWrite(led_pin, LOW);   // turn the LED off
   }
-  if (HW1_SER.available() > 0) {
-    inC = HW1_SER.read();
+  if (HW_SER1.available() > 0) {
+    inC = HW_SER1.read();
     Serial.print(millis() * 100 / 10000.0);  // print a time-varying value to see consistent output
     Serial.print("   ");
     if (inC < 48) Serial.print(' ');  // print space for characters below printables
@@ -90,11 +90,11 @@ void loop() {
     Serial.print("   ");
     Serial.println(inC, DEC);
 
-    HW1_SER.print("   ");
-    if (inC < 48) HW1_SER.print(' ');
-    else HW1_SER.print(inC);
-    HW1_SER.print("   ");
-    HW1_SER.println(inC, DEC);
+    HW_SER1.print("   ");
+    if (inC < 48) HW_SER1.print(' ');
+    else HW_SER1.print(inC);
+    HW_SER1.print("   ");
+    HW_SER1.println(inC, DEC);
   }
 
 }
